@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Event Countdown 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Font Minecraft Style -->
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: black;
+    font-family: 'Press Start 2P', monospace;
+    color: #e5e5e5;
+  }
+
+  .bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://images.wallpaperscraft.com/image/single/minecraft_night_forest_155164_1920x1080.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: brightness(45%) blur(2px);
+    z-index: -1;
+  }
+
+  .container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+    background: rgba(20, 20, 20, 0.65);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+    max-width: 420px;
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    color: #9ae6b4;
+  }
+
+  .countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .time-box {
+    background: rgba(0,0,0,0.55);
+    border-radius: 12px;
+    padding: 14px 8px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+  }
+
+  .number {
+    font-size: 22px;
+    color: #ffffff;
+  }
+
+  .label {
+    font-size: 8px;
+    margin-top: 6px;
+    color: #b5b5b5;
+  }
+
+  footer {
+    margin-top: 28px;
+    font-size: 7px;
+    color: #888;
+  }
+</style>
+</head>
+
+<body>
+<div class="bg"></div>
+
+<div class="container">
+  <div class="card">
+    <h1>COMING UP 2026 EVENT!</h1>
+
+    <div class="countdown">
+      <div class="time-box">
+        <div class="number" id="days">0</div>
+        <div class="label">HARI</div>
+      </div>
+      <div class="time-box">
+        <div class="number" id="hours">0</div>
+        <div class="label">JAM</div>
+      </div>
+      <div class="time-box">
+        <div class="number" id="minutes">0</div>
+        <div class="label">MENIT</div>
+      </div>
+      <div class="time-box">
+        <div class="number" id="seconds">0</div>
+        <div class="label">DETIK</div>
+      </div>
+    </div>
+
+    <footer>
+      Lunar SMP • New Year Event Countdown
+    </footer>
+  </div>
+</div>
+
+<script>
+  const target = new Date("January 1, 2026 00:00:00").getTime();
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      document.querySelector(".card").innerHTML =
+        "<h1>🎆 SELAMAT TAHUN BARU 2026 🎆</h1>";
+      return;
+    }
+
+    document.getElementById("days").innerText =
+      Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    document.getElementById("hours").innerText =
+      Math.floor((diff / (1000 * 60 * 60)) % 24);
+
+    document.getElementById("minutes").innerText =
+      Math.floor((diff / (1000 * 60)) % 60);
+
+    document.getElementById("seconds").innerText =
+      Math.floor((diff / 1000) % 60);
+  }, 1000);
+</script>
+
+</body>
+</html>
