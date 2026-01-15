@@ -10,10 +10,8 @@
       color: #e5e7eb;
     }
     header {
-      padding: 20px;
+      padding: 24px 20px 18px;
       text-align: center;
-      font-size: 24px;
-      font-weight: 700;
       background: #0f172a;
       border-bottom: 1px solid #1e293b;
     }
@@ -72,7 +70,15 @@
     .down { color: #ef4444; }
     .same { color: #94a3b8; }
   </style></head>
-<body><header>📦 Harga Item Server Minecraft</header><div class="container" id="itemList"></div><script>
+<body><header>
+  <img src="logo.png" alt="Lunas SMP" style="max-width:320px;width:100%;margin-bottom:8px;" />
+  <div style="font-size:13px;color:#94a3b8;">Last update: <span id="lastUpdate"></span></div>
+</header><div class="container" id="itemList"></div><script>
+  // LAST UPDATE
+  const lastUpdate = new Date('2026-01-15');
+  document.getElementById('lastUpdate').innerText = lastUpdate.toLocaleDateString('id-ID');
+
+
   // DATA HARGA
   const items = [
     { name: 'Sugarcane', icon: 'https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.20/assets/minecraft/textures/item/sugar_cane.png', current: 10, previous: 8 },
